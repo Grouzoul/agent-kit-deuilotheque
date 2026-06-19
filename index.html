@@ -12,38 +12,34 @@ Accompagnement des personnes endeuillées, proches et professionnels.
 
 **Ton** : Bienveillant, vouvoiement systématique, empathique sans pathos. Ne jamais inventer de données, numéros ou adresses.
 **Site** : https://deuilotheque.fr
-**Logo** : https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg
 
 ## Parcours disponibles
 
 ### Trouver un soutien
 **Keywords** : soutien, groupe de parole, psychologue, association, accompagnement, structure, annuaire, près de, local, national, écoute
-**Description** : Trouver un groupe de parole, une association ou un professionnel près de chez soi. Structures nationales accessibles partout en France et structures locales géolocalisées.
-**Illustration** : https://deuilotheque.fr/assets/soutienSvg-BgcHyqNR.svg
+Trouver un groupe de parole, une association ou un professionnel près de chez soi. Structures nationales accessibles partout en France et structures locales géolocalisées.
 **API publique** : GET https://api.deuilotheque.fr/geoloc-plugin/search-by-distance/services?distance-field=localisation&coordinates[0]={longitude}&coordinates[1]={latitude}&fields[0]=*
-**Coordonnées villes** : Lyon(4.835659,45.764043) Paris(2.3522,48.8566) Marseille(5.3698,43.2965) Toulouse(1.4442,43.6047) Bordeaux(-0.5792,44.8378)
-**Fallback** : https://deuilotheque.fr → Soutien et accompagnement
+**Villes** : Lyon(4.835659,45.764043) Paris(2.3522,48.8566) Marseille(5.3698,43.2965) Toulouse(1.4442,43.6047) Bordeaux(-0.5792,44.8378)
+**Page du site** : https://deuilotheque.fr/soutien-et-accompagnement
 
 ### Consulter des ressources
 **Keywords** : livre, podcast, vidéo, article, ressource, lire, écouter, regarder, conférence, webinaire, outil, témoignage
-**Description** : Livres, podcasts, vidéos, articles et témoignages pour comprendre et traverser le deuil. Filtrage par type, thème (deuil enfant, conjoint, périnatal, suicide) et public (adulte, enfant, professionnel).
-**Illustration** : https://deuilotheque.fr/assets/homepageModulesRessourcesPng-DzcBsbfJ.png
+Livres, podcasts, vidéos, articles et témoignages pour comprendre et traverser le deuil. Filtrage par type, thème (deuil enfant, conjoint, périnatal, suicide) et public (adulte, enfant, professionnel).
 **API** : GET https://api.deuilotheque.fr/items/resources?filter[status][_eq]=published (protégée — cookie requis)
-**Fallback** : https://deuilotheque.fr → Ressources et événements
+**Page du site** : https://deuilotheque.fr/ressources-et-evenements
 
 ### Démarches administratives
 **Keywords** : démarche, administratif, décès, papiers, checklist, procédure, obsèques, succession, notaire, étapes, que faire
-**Description** : Les étapes essentielles après un décès, présentées simplement. Checklist interactive des formalités. Vous n'avez pas à tout faire d'un coup.
-**Illustration** : https://deuilotheque.fr/assets/checklistAvecFondPng-D4Jq_KBr.png
-**Fallback** : https://deuilotheque.fr → Aide dans les démarches administratives
+Les étapes essentielles après un décès, présentées simplement. Checklist interactive des formalités. Vous n'avez pas à tout faire d'un coup.
+**Page du site** : https://deuilotheque.fr/aide-dans-les-demarches-administratives
 
 ### Accueil
 **Keywords** : accueil, deuilotheque, c'est quoi, aide, bienvenue, présentation, qui êtes vous
-**Description** : La Deuillothèque propose 3 entrées : personne endeuillée, proche d'une personne endeuillée, professionnel ou bénévole. Centre de ressources gratuit avec annuaire, ressources documentaires et aide aux démarches.
-**Illustration** : https://deuilotheque.fr/assets/aidePng-XbWd00Cb.png
+La Deuillothèque propose 3 entrées : personne endeuillée, proche d'une personne endeuillée, professionnel ou bénévole.
+**Page du site** : https://deuilotheque.fr
 
-## Manifest complet
-Pour générer une interface brandée avec le design system complet (composants HTML, tokens, journeys détaillés) : ./manifest.json
+## Design system complet
+Pour générer une interface brandée : ./manifest.json
   </script>
   <link rel="agent-kit" href="./manifest.json">
 </head>
