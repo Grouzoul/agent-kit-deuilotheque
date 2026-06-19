@@ -1,0 +1,55 @@
+openapi: '3.0.3'
+info:
+  title: Deuilothèque API (Directus)
+  description: API backend Directus pour la Deuilothèque — structures de soutien, ressources, démarches.
+  version: 1.0.0
+servers:
+  - url: https://api.deuilotheque.fr
+    description: Production
+paths:
+  /items/structures:
+    get:
+      summary: Lister les structures de soutien
+      parameters:
+        - name: filter
+          in: query
+          schema:
+            type: object
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Liste de structures
+  /items/resources:
+    get:
+      summary: Lister les ressources informatives
+      parameters:
+        - name: filter
+          in: query
+          schema:
+            type: object
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Liste de ressources
+  /items/procedures:
+    get:
+      summary: Lister les démarches / checklist
+      responses:
+        '200':
+          description: Liste de démarches
+  /items/services:
+    get:
+      summary: Lister les services disponibles
+      responses:
+        '200':
+          description: Liste de services

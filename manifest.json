@@ -1,0 +1,202 @@
+{
+  "name": "La Deuilothèque",
+  "description": "Plateforme d'accompagnement des personnes en deuil proposant un annuaire de structures de soutien, des ressources informatives, des démarches administratives (checklist) et une orientation vers l'aide adaptée. Portée par l'UNAF.",
+  "version": "1.0.0",
+  "protocol": "agent-kit/1.0",
+  "homepage": "https://deuilotheque.fr",
+  "locale": "fr-FR",
+  "brand_voice": "Ton bienveillant, empathique et rassurant, adapté à des personnes traversant une période de deuil. Le langage est clair, accessible et dénué de jargon, avec une posture d'accompagnement sans jamais être intrusif. La communication privilégie la douceur et la simplicité pour guider l'utilisateur vers les ressources appropriées.",
+  "agent_instructions": "1) Choisir le journey dont les keywords matchent la question de l'utilisateur. 2) Copier-coller les composants de components.html SANS réécrire le CSS — injecter uniquement les données dans les emplacements prévus. 3) Ne JAMAIS inventer de contenu qui n'est pas dans le kit (pas de numéros de téléphone, pas de données externes, même si elles sont vraies — SEUL le contenu du kit fait foi). 4) Pour les images : chaque journey référence des clés d'images (ex: soutienSvg). Chercher l'URL correspondante dans manifest.assets.illustrations (ou logos/icons) et générer un <img src=\"URL_TROUVEE\">. Exemple : si le journey dit \"Image: soutienSvg\" et que manifest.assets.illustrations.soutienSvg = \"https://deuilotheque.fr/assets/soutienSvg-BgcHyqNR.svg\", alors générer <img src=\"https://deuilotheque.fr/assets/soutienSvg-BgcHyqNR.svg\">. 5) Si l'API ne répond pas ou si aucun journey ne correspond, utiliser le composant FALLBACK avec le lien vers https://deuilotheque.fr. 6) Toujours afficher le logo via la clé logoSvg dans le header. 7) Ne jamais suggérer d'appeler un numéro ou contacter un service dont les coordonnées ne figurent pas explicitement dans le kit.",
+  "render": {
+    "background": "#F9F7FF"
+  },
+  "constraints": {
+    "never_invent_data": "Ne JAMAIS inventer de données — aucun numéro de téléphone, adresse, email ou information de contact.",
+    "no_fake_contact_info": "Ne jamais générer de coordonnées fictives, même plausibles.",
+    "fallback_no_data": "Fallback UNIFIÉ avec lien vers https://deuilotheque.fr.",
+    "no_invented_features": "S'en tenir aux journeys définis dans le kit.",
+    "respect_brand_voice": "Respecter le ton bienveillant et empathique de la marque.",
+    "no_infinite_spinner": "Timeout 8s max.",
+    "content_from_kit_only": "Contenu des journeys ou API uniquement.",
+    "use_components_as_is": "Copier-coller les composants, ne PAS réécrire le CSS.",
+    "sensitive_topic": "Le deuil est un sujet sensible : ne jamais banaliser, ne pas utiliser de ton commercial ou enthousiaste, rester sobre et respectueux."
+  },
+  "design": {
+    "tokens": "./design/tokens.json",
+    "guidelines": "./design/guidelines.md",
+    "components": "./design/components.html"
+  },
+  "api": {
+    "spec": "./api/openapi.yaml"
+  },
+  "journeys": [
+    {
+      "id": "accueil",
+      "name": "Accueil — Découvrir la Deuilothèque",
+      "file": "journeys/accueil.html",
+      "auth_required": false,
+      "keywords": [
+        "accueil",
+        "bienvenue",
+        "c'est quoi",
+        "deuilothèque",
+        "présentation",
+        "aide deuil",
+        "page d'accueil",
+        "commencer",
+        "découvrir"
+      ]
+    },
+    {
+      "id": "soutien",
+      "name": "Trouver du soutien — Annuaire des structures",
+      "file": "journeys/soutien.html",
+      "auth_required": false,
+      "keywords": [
+        "soutien",
+        "aide",
+        "accompagnement",
+        "structure",
+        "annuaire",
+        "association",
+        "psychologue",
+        "groupe de parole",
+        "écoute",
+        "près de chez moi",
+        "trouver",
+        "localisation",
+        "carte"
+      ]
+    },
+    {
+      "id": "ressources",
+      "name": "Ressources informatives",
+      "file": "journeys/ressources.html",
+      "auth_required": false,
+      "keywords": [
+        "ressource",
+        "information",
+        "article",
+        "comprendre",
+        "lire",
+        "documentation",
+        "guide",
+        "savoir",
+        "en savoir plus",
+        "contenu",
+        "témoignage"
+      ]
+    },
+    {
+      "id": "demarches",
+      "name": "Démarches administratives — Checklist",
+      "file": "journeys/demarches.html",
+      "auth_required": false,
+      "keywords": [
+        "démarche",
+        "administratif",
+        "checklist",
+        "papier",
+        "document",
+        "succession",
+        "formalité",
+        "après décès",
+        "que faire",
+        "étapes",
+        "procédure",
+        "obsèques",
+        "notaire"
+      ]
+    },
+    {
+      "id": "aide-orientation",
+      "name": "Aide et orientation personnalisée",
+      "file": "journeys/aide-orientation.html",
+      "auth_required": false,
+      "keywords": [
+        "aide",
+        "orientation",
+        "besoin",
+        "je ne sais pas",
+        "perdu",
+        "conseiller",
+        "guider",
+        "quel soutien",
+        "comment faire",
+        "par où commencer",
+        "ma boussole",
+        "aidant"
+      ]
+    }
+  ],
+  "assets": {
+    "logos": {
+      "logoUnafSvg": {
+        "url": "https://deuilotheque.fr/assets/logoUnafSvg-Bn7pePjy.svg",
+        "context": "Logo de l'UNAF (Union Nationale des Associations Familiales) — footer et mentions partenaires"
+      },
+      "logoSvg": {
+        "url": "https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg",
+        "context": "Logo principal de la Deuilothèque en couleur — header et identification du site"
+      },
+      "logoPng": {
+        "url": "https://deuilotheque.fr/assets/logoPng-Drn01LKY.png",
+        "context": "Logo principal de la Deuilothèque en format PNG — fallback header et partage réseaux sociaux"
+      },
+      "logoNegatifSvg": {
+        "url": "https://deuilotheque.fr/assets/logoNegatifSvg-B-92Nm_0.svg",
+        "context": "Logo de la Deuilothèque en version négative (blanc) — footer sur fond coloré"
+      },
+      "logoMaBoussoleAidantsPng": {
+        "url": "https://deuilotheque.fr/assets/logoMaBoussoleAidantsPng-D4OWaLPB.png",
+        "context": "Logo du programme Ma Boussole Aidants — section orientation et partenaires"
+      }
+    },
+    "illustrations": {
+      "soutienSvg": {
+        "url": "https://deuilotheque.fr/assets/soutienSvg-BgcHyqNR.svg",
+        "context": "Illustration de groupe de personnes en discussion / soutien mutuel — hero du parcours Soutien et annuaire"
+      },
+      "informationSvg": {
+        "url": "https://deuilotheque.fr/assets/informationSvg-E7whjSrj.svg",
+        "context": "Illustration représentant l'information et la documentation — hero du parcours Ressources"
+      },
+      "homepageModulesRessourcesPng": {
+        "url": "https://deuilotheque.fr/assets/homepageModulesRessourcesPng-DzcBsbfJ.png",
+        "context": "Illustration des modules ressources sur la page d'accueil — card de présentation des ressources"
+      },
+      "homepageModulesAnnuaireSvg": {
+        "url": "https://deuilotheque.fr/assets/homepageModulesAnnuaireSvg-5rFgPzWZ.svg",
+        "context": "Illustration de l'annuaire des structures — card de présentation de l'annuaire sur la page d'accueil"
+      },
+      "checklistPng": {
+        "url": "https://deuilotheque.fr/assets/checklistPng-DkA_1cFr.png",
+        "context": "Illustration d'une checklist / liste de tâches — hero du parcours Démarches administratives"
+      },
+      "checklistAvecFondPng": {
+        "url": "https://deuilotheque.fr/assets/checklistAvecFondPng-D4Jq_KBr.png",
+        "context": "Illustration de checklist avec fond décoratif — variante pour card ou section démarches"
+      },
+      "aideSvg": {
+        "url": "https://deuilotheque.fr/assets/aideSvg-B6pMWo2W.svg",
+        "context": "Illustration d'aide et d'orientation — hero du parcours Aide et orientation personnalisée"
+      },
+      "aidePng": {
+        "url": "https://deuilotheque.fr/assets/aidePng-XbWd00Cb.png",
+        "context": "Illustration d'aide en format PNG — variante pour le parcours Aide sur fonds colorés"
+      }
+    },
+    "icons": {},
+    "fonts": "./assets/fonts/",
+    "_mode": "urls",
+    "_note": "Les images sont référencées par leurs URLs de production. L'agent utilise directement <img src=\"URL\"> dans les artifacts."
+  },
+  "_meta": {
+    "generated_by": "@webcapsule/agent-kit",
+    "stack_detected": "vite + plasmic + unknown",
+    "routes_found": 0,
+    "assets_copied": 21,
+    "needs_ai_refinement": false,
+    "refined_at": "2026-06-19T08:33:07.876Z"
+  }
+}
