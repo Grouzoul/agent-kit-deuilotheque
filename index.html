@@ -4,73 +4,118 @@
   <meta charset="UTF-8">
   <title>Deuillothèque — Centre de ressources sur le deuil</title>
 
-  <!-- Agent Kit: AI agent discovery, SEO & content layer -->
-  <script type="application/agent-kit+md">
+  <!-- ═══ AGENT KIT: INDEX ═══ -->
+  <script type="application/agent-kit+md" id="agent-kit-index">
 # Deuillothèque
-Centre de ressources gratuit et ouvert sur le deuil, porté par Dialogue & Solidarités (groupe OCIRP).
-Accompagnement des personnes endeuillées, proches et professionnels.
+Centre de ressources gratuit sur le deuil, porté par Dialogue & Solidarités (groupe OCIRP).
 
-**Ton** : Bienveillant, vouvoiement systématique, empathique sans pathos. Ne jamais inventer de données, numéros ou adresses. Le deuil est un sujet sensible : rester sobre et respectueux.
+**Ton** : Bienveillant, vouvoiement, empathique sans pathos. Ne jamais inventer de données.
 **Site** : https://deuilotheque.fr
+**Background** : #F9F7FF | **Primaire** : #9882CF | **Secondaire** : #5875B6
 **Logo** : https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg
-**Background** : #F9F7FF
-**Couleur primaire** : #9882CF (violet), #5875B6 (bleu)
 
-## Images disponibles
+## Images
 - soutien : https://deuilotheque.fr/assets/soutienSvg-BgcHyqNR.svg
-- information : https://deuilotheque.fr/assets/informationSvg-E7whjSrj.svg
 - ressources : https://deuilotheque.fr/assets/homepageModulesRessourcesPng-DzcBsbfJ.png
 - annuaire : https://deuilotheque.fr/assets/homepageModulesAnnuaireSvg-5rFgPzWZ.svg
 - checklist : https://deuilotheque.fr/assets/checklistAvecFondPng-D4Jq_KBr.png
 - aide : https://deuilotheque.fr/assets/aidePng-XbWd00Cb.png
-- logoNegatif : https://deuilotheque.fr/assets/logoNegatifSvg-B-92Nm_0.svg
-- logoUNAF : https://deuilotheque.fr/assets/logoUnafSvg-Bn7pePjy.svg
+- information : https://deuilotheque.fr/assets/informationSvg-E7whjSrj.svg
 
-## Parcours disponibles
+## Parcours (détail dans les blocs ci-dessous)
+- **#agent-kit-soutien** : Trouver un groupe de parole, une association, un psychologue [soutien, groupe de parole, accompagnement, psychologue, association, près de, annuaire]
+- **#agent-kit-ressources** : Livres, podcasts, vidéos sur le deuil [livre, podcast, vidéo, article, ressource, lire, écouter]
+- **#agent-kit-demarches** : Démarches administratives après un décès [démarche, administratif, décès, papiers, checklist, succession]
+- **#agent-kit-accueil** : Découvrir la Deuillothèque [accueil, deuilotheque, c'est quoi, aide]
 
+## Instructions
+1. Identifie le parcours qui matche la question via les keywords
+2. Lis le bloc correspondant pour le détail
+3. Génère un artifact HTML avec les couleurs et images ci-dessus
+4. Logo en header : img src du logo ci-dessus
+5. Si l'API ne répond pas → lien vers la Page du site du parcours
+6. Ne jamais inventer de données
+7. Format : HTML/CSS vanilla, pas de dépendances
+
+## Design system complet
+Composants HTML copier-coller : ./manifest.json → design/components.html
+  </script>
+
+  <!-- ═══ AGENT KIT: SOUTIEN ═══ -->
+  <script type="application/agent-kit+md" id="agent-kit-soutien">
 ### Trouver un soutien
-**Keywords** : soutien, groupe de parole, psychologue, association, accompagnement, structure, annuaire, près de, local, national, écoute
-Trouver un groupe de parole, une association ou un professionnel près de chez soi. Structures nationales accessibles partout en France et structures locales géolocalisées.
+Trouver un groupe de parole, une association ou un professionnel près de chez soi.
+Structures nationales accessibles partout en France et structures locales géolocalisées.
+
 **Image hero** : soutien
+**Page du site** : https://deuilotheque.fr/soutien-et-accompagnement
 **API publique** : GET https://api.deuilotheque.fr/geoloc-plugin/search-by-distance/services?distance-field=localisation&coordinates[0]={longitude}&coordinates[1]={latitude}&fields[0]=*
 **Villes** : Lyon(4.835659,45.764043) Paris(2.3522,48.8566) Marseille(5.3698,43.2965) Toulouse(1.4442,43.6047) Bordeaux(-0.5792,44.8378)
-**Page du site** : https://deuilotheque.fr/soutien-et-accompagnement
-**Sections** : Header avec logo → Hero "Annuaire des structures de soutien" avec image annuaire → Barre de recherche par ville → Cards de structures (nom, type, localisation) → Lien vers la page du site → Footer
 
+**Sections à afficher** :
+1. Header avec logo Deuillothèque
+2. Hero "Annuaire des structures de soutien" avec image annuaire — "Trouvez une structure d'accompagnement au deuil près de chez vous."
+3. Barre de recherche par ville
+4. Cards de structures : nom, type de service, localisation
+5. Si pas de données API → bouton "Voir l'annuaire sur deuilotheque.fr" lien vers la page du site
+6. Footer Deuillothèque
+  </script>
+
+  <!-- ═══ AGENT KIT: RESSOURCES ═══ -->
+  <script type="application/agent-kit+md" id="agent-kit-ressources">
 ### Consulter des ressources
-**Keywords** : livre, podcast, vidéo, article, ressource, lire, écouter, regarder, conférence, webinaire, outil, témoignage
-Livres, podcasts, vidéos, articles et témoignages pour comprendre et traverser le deuil. Filtrage par type, thème (deuil enfant, conjoint, périnatal, suicide) et public (adulte, enfant, professionnel).
-**Image hero** : ressources
-**API** : GET https://api.deuilotheque.fr/items/resources?filter[status][_eq]=published (protégée — cookie requis)
-**Page du site** : https://deuilotheque.fr/ressources
-**Sections** : Header avec logo → Hero "Ressources" avec image ressources → Barre de recherche → Cards de ressources (titre, description, tag catégorie) → Lien vers la page du site → Footer
+Livres, podcasts, vidéos, articles et témoignages pour comprendre et traverser le deuil.
+Filtrage par type, thème (deuil enfant, conjoint, périnatal, suicide) et public (adulte, enfant, professionnel).
 
+**Image hero** : ressources
+**Page du site** : https://deuilotheque.fr/ressources
+**API** : GET https://api.deuilotheque.fr/items/resources?filter[status][_eq]=published (protégée — cookie requis)
+
+**Sections à afficher** :
+1. Header avec logo Deuillothèque
+2. Hero "Ressources" avec image ressources — "Des ressources pour mieux comprendre et traverser le deuil."
+3. Barre de recherche
+4. Cards de ressources : titre, description, tag catégorie
+5. Si pas de données API → bouton "Voir les ressources sur deuilotheque.fr" lien vers la page du site
+6. Footer Deuillothèque
+  </script>
+
+  <!-- ═══ AGENT KIT: DEMARCHES ═══ -->
+  <script type="application/agent-kit+md" id="agent-kit-demarches">
 ### Démarches administratives
-**Keywords** : démarche, administratif, décès, papiers, checklist, procédure, obsèques, succession, notaire, étapes, que faire
-Les étapes essentielles après un décès, présentées simplement. Checklist interactive des formalités. Vous n'avez pas à tout faire d'un coup.
+Les étapes essentielles après un décès, présentées simplement.
+Checklist interactive des formalités. Vous n'avez pas à tout faire d'un coup.
+
 **Image hero** : checklist
 **Page du site** : https://deuilotheque.fr/demarches-administratives
-**Sections** : Header avec logo → Hero "Démarches administratives" avec image checklist → Liste des étapes sous forme de cards → Lien vers la page du site → Footer
 
-### Accueil
-**Keywords** : accueil, deuilotheque, c'est quoi, aide, bienvenue, présentation, qui êtes vous
+**Sections à afficher** :
+1. Header avec logo Deuillothèque
+2. Hero "Démarches administratives" avec image checklist — "Les étapes et procédures à suivre après le décès d'un proche."
+3. Cards par étape : titre et description de chaque démarche
+4. Bouton "Voir la checklist complète sur deuilotheque.fr" lien vers la page du site
+5. Footer Deuillothèque
+  </script>
+
+  <!-- ═══ AGENT KIT: ACCUEIL ═══ -->
+  <script type="application/agent-kit+md" id="agent-kit-accueil">
+### Accueil Deuillothèque
 La Deuillothèque propose 3 entrées : personne endeuillée, proche d'une personne endeuillée, professionnel ou bénévole.
+Centre de ressources gratuit avec annuaire de structures, ressources documentaires et aide aux démarches administratives.
+
 **Image hero** : soutien
 **Page du site** : https://deuilotheque.fr
-**Sections** : Header avec logo → Hero "La Deuillothèque" → 3 cards modules (Soutien avec image soutien, Ressources avec image information, Démarches avec image aide) → Footer avec logos partenaires
 
-## Instructions pour l'agent
-Quand tu génères une interface à partir de ce kit :
-1. Utilise les couleurs : fond #F9F7FF, violet #9882CF, bleu #5875B6, texte #030712
-2. Charge les images via les URLs ci-dessus avec des balises img
-3. Le logo va dans le header : img src="https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg"
-4. Si l'API ne répond pas, affiche un lien vers la Page du site du parcours concerné
-5. Ne jamais inventer de données — seul le contenu de ce kit fait foi
-6. Format : HTML/CSS vanilla, pas de React ni dépendances externes
-
-## Design system complet (composants HTML copier-coller)
-Pour les composants stylés prêts à l'emploi : ./manifest.json → design/components.html
+**Sections à afficher** :
+1. Header avec logo Deuillothèque
+2. Hero "La Deuillothèque" avec image soutien — "Un espace de soutien et d'information pour les personnes en deuil et leurs proches."
+3. 3 cards modules :
+   - Soutien (image soutien) : "Trouvez du soutien adapté" → lien /soutien-et-accompagnement
+   - Ressources (image information) : "Accédez aux ressources" → lien /ressources
+   - Démarches (image aide) : "Aide aux démarches" → lien /demarches-administratives
+4. Footer Deuillothèque
   </script>
+
   <link rel="agent-kit" href="./manifest.json">
 </head>
 <body>
