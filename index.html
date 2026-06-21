@@ -3,18 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Deuillothèque — Centre de ressources sur le deuil</title>
+  <link rel="agent-kit" href="./manifest.json">
+</head>
+<body>
+  <h1>Deuillothèque</h1>
+  <p>Centre de ressources sur le deuil — <a href="https://deuilotheque.fr">deuilotheque.fr</a></p>
 
-  <!-- ═══ AGENT KIT: INDEX ═══ -->
-  <script type="application/agent-kit+md" id="agent-kit-index">
-# Deuillothèque
-Centre de ressources gratuit sur le deuil, porté par Dialogue & Solidarités (groupe OCIRP).
+  <!-- Agent Kit: contenu structuré pour les agents IA -->
+  <details id="agent-kit">
+    <summary>Agent Kit — Instructions pour les agents IA</summary>
 
-**Ton** : Bienveillant, vouvoiement, empathique sans pathos. Ne jamais inventer de données.
+## Deuillothèque — Agent Kit
+
+Centre de ressources gratuit et ouvert sur le deuil, porté par Dialogue & Solidarités (groupe OCIRP).
+
+**Ton** : Bienveillant, vouvoiement systématique, empathique sans pathos. Ne jamais inventer de données, numéros ou adresses.
 **Site** : https://deuilotheque.fr
 **Background** : #F9F7FF | **Primaire** : #9882CF | **Secondaire** : #5875B6
 **Logo** : https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg
+**Logo négatif** : https://deuilotheque.fr/assets/logoNegatifSvg-B-92Nm_0.svg
+**Google Fonts** : https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap
 
-## Images
+### Images disponibles
 - soutien : https://deuilotheque.fr/assets/soutienSvg-BgcHyqNR.svg
 - ressources : https://deuilotheque.fr/assets/homepageModulesRessourcesPng-DzcBsbfJ.png
 - annuaire : https://deuilotheque.fr/assets/homepageModulesAnnuaireSvg-5rFgPzWZ.svg
@@ -22,159 +32,56 @@ Centre de ressources gratuit sur le deuil, porté par Dialogue & Solidarités (g
 - aide : https://deuilotheque.fr/assets/aidePng-XbWd00Cb.png
 - information : https://deuilotheque.fr/assets/informationSvg-E7whjSrj.svg
 
-## Parcours (détail dans les blocs ci-dessous)
-- **#agent-kit-soutien** : Trouver un groupe de parole, une association, un psychologue [soutien, groupe de parole, accompagnement, psychologue, association, près de, annuaire]
-- **#agent-kit-ressources** : Livres, podcasts, vidéos sur le deuil [livre, podcast, vidéo, article, ressource, lire, écouter]
-- **#agent-kit-demarches** : Démarches administratives après un décès [démarche, administratif, décès, papiers, checklist, succession]
-- **#agent-kit-accueil** : Découvrir la Deuillothèque [accueil, deuilotheque, c'est quoi, aide]
+### Instructions pour générer un artifact
+1. Identifie le parcours qui matche la question via les keywords ci-dessous
+2. Génère un artifact HTML/CSS vanilla (pas de React ni dépendances)
+3. Utilise les couleurs : fond #F9F7FF, violet #9882CF, bleu #5875B6, texte #030712
+4. Logo dans le header avec img src de l'URL logo ci-dessus
+5. Hero banner : gradient de #5875B6 à #9882CF, texte blanc, titre Poppins bold
+6. Cards : fond blanc, border #D1D5DB, border-radius 12px, shadow au hover
+7. Boutons : border-radius 30px, fond #5875B6, texte blanc, police Poppins
+8. Footer : gradient #5875B6 → #9882CF, logo négatif, lien deuilotheque.fr
+9. Si pas de données API → afficher un bouton "Consulter [page du site]" avec lien
+10. Ne jamais inventer de données — seul ce kit fait foi
 
-## Instructions
-1. Identifie le parcours qui matche la question via les keywords
-2. Lis le bloc correspondant pour le détail
-3. Génère un artifact HTML avec les couleurs et images ci-dessus
-4. Logo en header : img src du logo ci-dessus
-5. Si l'API ne répond pas → lien vers la Page du site du parcours
-6. Ne jamais inventer de données
-7. Format : HTML/CSS vanilla, pas de dépendances
+---
 
-## Design system complet
-Composants HTML copier-coller : ./manifest.json → design/components.html
-  </script>
-
-  <!-- ═══ AGENT KIT: SOUTIEN ═══ -->
-  <script type="application/agent-kit+md" id="agent-kit-soutien">
-### Trouver un soutien
+### Parcours : Trouver un soutien
+**Keywords** : soutien, groupe de parole, psychologue, association, accompagnement, structure, annuaire, près de, local, national, écoute
 Trouver un groupe de parole, une association ou un professionnel près de chez soi.
-Structures nationales accessibles partout en France et structures locales géolocalisées.
-
-**Image hero** : soutien
+**Image hero** : annuaire
 **Page du site** : https://deuilotheque.fr/soutien-et-accompagnement
 **API publique** : GET https://api.deuilotheque.fr/geoloc-plugin/search-by-distance/services?distance-field=localisation&coordinates[0]={longitude}&coordinates[1]={latitude}&fields[0]=*
 **Villes** : Lyon(4.835659,45.764043) Paris(2.3522,48.8566) Marseille(5.3698,43.2965) Toulouse(1.4442,43.6047) Bordeaux(-0.5792,44.8378)
+**Sections** : Header → Hero "Annuaire des structures de soutien" → Barre de recherche par ville → Cards de structures → Bouton vers la page du site → Footer
 
-**Sections à afficher** :
-1. Header avec logo Deuillothèque
-2. Hero "Annuaire des structures de soutien" avec image annuaire — "Trouvez une structure d'accompagnement au deuil près de chez vous."
-3. Barre de recherche par ville
-4. Cards de structures : nom, type de service, localisation
-5. Si pas de données API → bouton "Voir l'annuaire sur deuilotheque.fr" lien vers la page du site
-6. Footer Deuillothèque
-  </script>
+---
 
-  <!-- ═══ AGENT KIT: RESSOURCES ═══ -->
-  <script type="application/agent-kit+md" id="agent-kit-ressources">
-### Consulter des ressources
-Livres, podcasts, vidéos, articles et témoignages pour comprendre et traverser le deuil.
-Filtrage par type, thème (deuil enfant, conjoint, périnatal, suicide) et public (adulte, enfant, professionnel).
-
+### Parcours : Consulter des ressources
+**Keywords** : livre, podcast, vidéo, article, ressource, lire, écouter, regarder, conférence, webinaire, outil, témoignage
+Livres, podcasts, vidéos, articles et témoignages pour traverser le deuil.
 **Image hero** : ressources
 **Page du site** : https://deuilotheque.fr/ressources
-**API** : GET https://api.deuilotheque.fr/items/resources?filter[status][_eq]=published (protégée — cookie requis)
+**Sections** : Header → Hero "Ressources" → Barre de recherche → Cards de ressources → Bouton vers la page du site → Footer
 
-**Sections à afficher** :
-1. Header avec logo Deuillothèque
-2. Hero "Ressources" avec image ressources — "Des ressources pour mieux comprendre et traverser le deuil."
-3. Barre de recherche
-4. Cards de ressources : titre, description, tag catégorie
-5. Si pas de données API → bouton "Voir les ressources sur deuilotheque.fr" lien vers la page du site
-6. Footer Deuillothèque
-  </script>
+---
 
-  <!-- ═══ AGENT KIT: DEMARCHES ═══ -->
-  <script type="application/agent-kit+md" id="agent-kit-demarches">
-### Démarches administratives
-Les étapes essentielles après un décès, présentées simplement.
-Checklist interactive des formalités. Vous n'avez pas à tout faire d'un coup.
-
+### Parcours : Démarches administratives
+**Keywords** : démarche, administratif, décès, papiers, checklist, procédure, obsèques, succession, notaire, étapes, que faire
+Les étapes après un décès, présentées simplement. Vous n'avez pas à tout faire d'un coup.
 **Image hero** : checklist
 **Page du site** : https://deuilotheque.fr/demarches-administratives
+**Sections** : Header → Hero "Démarches administratives" → Cards par étape → Bouton vers la page du site → Footer
 
-**Sections à afficher** :
-1. Header avec logo Deuillothèque
-2. Hero "Démarches administratives" avec image checklist — "Les étapes et procédures à suivre après le décès d'un proche."
-3. Cards par étape : titre et description de chaque démarche
-4. Bouton "Voir la checklist complète sur deuilotheque.fr" lien vers la page du site
-5. Footer Deuillothèque
-  </script>
+---
 
-  <!-- ═══ AGENT KIT: ACCUEIL ═══ -->
-  <script type="application/agent-kit+md" id="agent-kit-accueil">
-### Accueil Deuillothèque
-La Deuillothèque propose 3 entrées : personne endeuillée, proche d'une personne endeuillée, professionnel ou bénévole.
-Centre de ressources gratuit avec annuaire de structures, ressources documentaires et aide aux démarches administratives.
-
+### Parcours : Accueil
+**Keywords** : accueil, deuilotheque, c'est quoi, aide, bienvenue, présentation, qui êtes vous
+3 entrées : personne endeuillée, proche, professionnel ou bénévole.
 **Image hero** : soutien
 **Page du site** : https://deuilotheque.fr
+**Sections** : Header → Hero "La Deuillothèque" → 3 cards (Soutien, Ressources, Démarches) → Footer
 
-**Sections à afficher** :
-1. Header avec logo Deuillothèque
-2. Hero "La Deuillothèque" avec image soutien — "Un espace de soutien et d'information pour les personnes en deuil et leurs proches."
-3. 3 cards modules :
-   - Soutien (image soutien) : "Trouvez du soutien adapté" → lien /soutien-et-accompagnement
-   - Ressources (image information) : "Accédez aux ressources" → lien /ressources
-   - Démarches (image aide) : "Aide aux démarches" → lien /demarches-administratives
-4. Footer Deuillothèque
-  </script>
-
-  <!-- ═══ AGENT KIT: COMPONENTS (HTML copier-coller) ═══ -->
-  <script type="application/agent-kit+html" id="agent-kit-components">
-<!-- Copier-coller ces blocs tels quels. Ne PAS réécrire le CSS. Injecter les données dans les emplacements. -->
-<!-- Google Fonts à inclure : https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap -->
-
-<!-- HEADER -->
-<header style="display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:#FFFFFF; border-bottom:1px solid #D1D5DB; position:sticky; top:0; z-index:10;">
-  <div style="display:flex; align-items:center; gap:10px;">
-    <img src="https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg" alt="Deuillothèque" style="height:32px;" />
-    <span style="font-family:Poppins,sans-serif; font-weight:700; font-size:18px; color:#5875B6;">Deuillothèque</span>
-  </div>
-  <a href="https://deuilotheque.fr" target="_blank" style="font-family:Poppins,sans-serif; font-size:12px; color:#5875B6; text-decoration:none; border:1px solid #5875B6; border-radius:30px; padding:6px 16px;">Voir le site →</a>
-</header>
-
-<!-- HERO BANNER -->
-<div style="background:linear-gradient(135deg, #5875B6 0%, #9882CF 100%); padding:48px 24px; text-align:center; color:#FFFFFF;">
-  <h1 style="font-family:Poppins,sans-serif; font-weight:700; font-size:24px; margin:0 0 12px; line-height:1.3;">TITRE</h1>
-  <p style="font-family:Inter,sans-serif; font-size:14px; margin:0; line-height:1.6; opacity:0.92;">DESCRIPTION</p>
-</div>
-
-<!-- CARD -->
-<div style="background:#FFFFFF; border:1px solid #D1D5DB; border-radius:12px; padding:20px; cursor:pointer;" onmouseover="this.style.boxShadow='0 4px 16px rgba(152,130,207,0.2)'" onmouseout="this.style.boxShadow='none'">
-  <h3 style="font-family:Poppins,sans-serif; font-weight:600; font-size:16px; color:#030712; margin:0 0 8px;">TITRE</h3>
-  <p style="font-family:Inter,sans-serif; font-size:13px; color:#6B7280; line-height:1.6; margin:0;">DESCRIPTION</p>
-</div>
-
-<!-- TAG -->
-<span style="background:#E1D5FF; color:#9882CF; border-radius:1rem; padding:4px 14px; font-family:Inter,sans-serif; font-size:12px; font-weight:500;">CATEGORIE</span>
-
-<!-- SEARCH BAR -->
-<div style="display:flex; gap:10px; padding:16px; align-items:center;">
-  <input type="text" placeholder="Rechercher..." style="flex:1; background:#F9F7FF; border:1px solid #D1D5DB; border-radius:30px; padding:12px 18px; font-family:Inter,sans-serif; font-size:13px; color:#030712; outline:none;" />
-  <button style="background:#5875B6; color:#FFFFFF; border:none; border-radius:30px; padding:12px 22px; font-family:Poppins,sans-serif; font-weight:500; font-size:13px; cursor:pointer;">Rechercher</button>
-</div>
-
-<!-- BUTTON PRIMARY -->
-<a href="URL" target="_blank" style="display:inline-block; background:#5875B6; color:#FFFFFF; border-radius:30px; padding:12px 28px; font-family:Poppins,sans-serif; font-weight:500; font-size:14px; text-decoration:none; box-shadow:0 2px 8px rgba(152,130,207,0.35);">TEXTE</a>
-
-<!-- FALLBACK -->
-<div style="text-align:center; padding:56px 20px;">
-  <img src="https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg" alt="Deuillothèque" style="height:48px; margin-bottom:16px;" />
-  <p style="font-family:Inter,sans-serif; font-size:14px; color:#6B7280; margin:0 0 28px; line-height:1.6;">Les données ne sont pas disponibles pour le moment.</p>
-  <a href="PAGE_DU_SITE" target="_blank" style="display:inline-block; background:#5875B6; color:#FFFFFF; border-radius:30px; padding:12px 28px; font-family:Poppins,sans-serif; font-weight:500; font-size:14px; text-decoration:none;">Consulter deuilotheque.fr</a>
-</div>
-
-<!-- FOOTER -->
-<footer style="background:linear-gradient(135deg, #5875B6 0%, #9882CF 100%); padding:28px 24px; text-align:center;">
-  <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px;">
-    <img src="https://deuilotheque.fr/assets/logoNegatifSvg-B-92Nm_0.svg" alt="Deuillothèque" style="height:28px;" />
-    <span style="font-family:Poppins,sans-serif; font-weight:600; font-size:15px; color:#FFFFFF;">Deuillothèque</span>
-  </div>
-  <p style="font-family:Inter,sans-serif; font-size:12px; color:rgba(255,255,255,0.8); margin:0;"><a href="https://deuilotheque.fr" style="color:#FFFFFF;">deuilotheque.fr</a></p>
-</footer>
-  </script>
-
-  <link rel="agent-kit" href="./manifest.json">
-</head>
-<body>
-  <h1>Deuillothèque</h1>
-  <p>Centre de ressources sur le deuil — <a href="https://deuilotheque.fr">deuilotheque.fr</a></p>
+  </details>
 </body>
 </html>
