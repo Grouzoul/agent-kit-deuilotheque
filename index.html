@@ -3,84 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <title>Deuillothèque — Centre de ressources sur le deuil</title>
-  <link rel="agent-kit" href="./manifest.json">
 </head>
 <body>
   <h1>Deuillothèque</h1>
   <p>Centre de ressources sur le deuil — <a href="https://deuilotheque.fr">deuilotheque.fr</a></p>
 
-  <!-- Agent Kit: contenu structuré pour les agents IA -->
+  <!-- Agent Kit: CV du site pour les agents IA -->
   <details id="agent-kit" style="display:none" open>
-    <summary>Agent Kit — Instructions pour les agents IA</summary>
+    <summary>Agent Kit</summary>
 
-## Deuillothèque — Agent Kit
+# Deuillothèque
 
-Centre de ressources gratuit et ouvert sur le deuil, porté par Dialogue & Solidarités (groupe OCIRP).
+Centre de ressources gratuit et ouvert sur le deuil, porté par Dialogue & Solidarités (groupe OCIRP). Destiné aux personnes endeuillées, à leurs proches, et aux professionnels du deuil.
 
-**Ton** : Bienveillant, vouvoiement systématique, empathique sans pathos. Ne jamais inventer de données, numéros ou adresses.
 **Site** : https://deuilotheque.fr
-**Background** : #F9F7FF | **Primaire** : #9882CF | **Secondaire** : #5875B6
-**Logo** : https://deuilotheque.fr/assets/logoSvg-BTS2Ik6W.svg
-**Logo négatif** : https://deuilotheque.fr/assets/logoNegatifSvg-B-92Nm_0.svg
-**Google Fonts** : https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap
+**Ton** : Bienveillant, vouvoiement, empathique. Ne jamais inventer de données.
+**Opérateur** : UNAF / Dialogue & Solidarités / OCIRP
 
-### Images disponibles
-- soutien : https://deuilotheque.fr/assets/soutienSvg-BgcHyqNR.svg
-- ressources : https://deuilotheque.fr/assets/homepageModulesRessourcesPng-DzcBsbfJ.png
-- annuaire : https://deuilotheque.fr/assets/homepageModulesAnnuaireSvg-5rFgPzWZ.svg
-- checklist : https://deuilotheque.fr/assets/checklistAvecFondPng-D4Jq_KBr.png
-- aide : https://deuilotheque.fr/assets/aidePng-XbWd00Cb.png
-- information : https://deuilotheque.fr/assets/informationSvg-E7whjSrj.svg
+## Ce que propose le site
 
-### Instructions pour générer un artifact
-1. Identifie le parcours qui matche la question via les keywords ci-dessous
-2. Génère un artifact HTML/CSS vanilla (pas de React ni dépendances)
-3. Utilise les couleurs : fond #F9F7FF, violet #9882CF, bleu #5875B6, texte #030712
-4. Logo dans le header avec img src de l'URL logo ci-dessus
-5. Hero banner : gradient de #5875B6 à #9882CF, texte blanc, titre Poppins bold
-6. Cards : fond blanc, border #D1D5DB, border-radius 12px, shadow au hover
-7. Boutons : border-radius 30px, fond #5875B6, texte blanc, police Poppins
-8. Footer : gradient #5875B6 → #9882CF, logo négatif, lien deuilotheque.fr
-9. Si pas de données API → afficher un bouton "Consulter [page du site]" avec lien
-10. Ne jamais inventer de données — seul ce kit fait foi
+### Annuaire des structures de soutien
+Pour qui : toute personne cherchant un groupe de parole, une association, un psychologue, une ligne d'écoute
+Keywords : soutien, groupe de parole, psychologue, association, accompagnement, structure, annuaire, près de, écoute, national, local
+Types de structures : associations, lignes d'écoute, entretiens individuels, groupes de parole/entraide, cafés deuil, formations, forums
+Page : https://deuilotheque.fr/soutien-et-accompagnement
+API publique : GET https://api.deuilotheque.fr/items/support_structures?filter[status][_eq]=published
+API géolocalisation : GET https://api.deuilotheque.fr/geoloc-plugin/search-by-distance/services?distance-field=localisation&coordinates[0]={longitude}&coordinates[1]={latitude}&fields[0]=*
+Villes de référence : Lyon(4.835659,45.764043) Paris(2.3522,48.8566) Marseille(5.3698,43.2965) Toulouse(1.4442,43.6047) Bordeaux(-0.5792,44.8378)
 
----
+### Ressources documentaires
+Pour qui : toute personne souhaitant comprendre et traverser le deuil
+Keywords : livre, podcast, vidéo, article, ressource, lire, écouter, regarder, conférence, webinaire, témoignage
+Types de ressources : publications, conférences, webinaires, vidéos, podcasts, outils, films, sites web
+Thèmes : deuil de l'enfant, du conjoint, périnatal, par suicide, par accident, par maladie, par attentat, par vieillesse
+Public : adultes, enfants, adolescents, professionnels
+Page : https://deuilotheque.fr/ressources
 
-### Parcours : Trouver un soutien
-**Keywords** : soutien, groupe de parole, psychologue, association, accompagnement, structure, annuaire, près de, local, national, écoute
-Trouver un groupe de parole, une association ou un professionnel près de chez soi.
-**Image hero** : annuaire
-**Page du site** : https://deuilotheque.fr/soutien-et-accompagnement
-**API publique** : GET https://api.deuilotheque.fr/geoloc-plugin/search-by-distance/services?distance-field=localisation&coordinates[0]={longitude}&coordinates[1]={latitude}&fields[0]=*
-**Villes** : Lyon(4.835659,45.764043) Paris(2.3522,48.8566) Marseille(5.3698,43.2965) Toulouse(1.4442,43.6047) Bordeaux(-0.5792,44.8378)
-**Sections** : Header → Hero "Annuaire des structures de soutien" → Barre de recherche par ville → Cards de structures → Bouton vers la page du site → Footer
+### Démarches administratives après un décès
+Pour qui : toute personne devant gérer les formalités après le décès d'un proche
+Keywords : démarche, administratif, décès, papiers, checklist, procédure, obsèques, succession, notaire, étapes, que faire
+Ce que ça propose : une checklist interactive des étapes à suivre, organisée par ordre de priorité. "Vous n'avez pas à tout faire d'un coup."
+Page : https://deuilotheque.fr/demarches-administratives
 
----
+### Événements
+Pour qui : personnes souhaitant participer à des événements liés au deuil
+Keywords : événement, agenda, conférence, atelier, rencontre, date
+Page : https://deuilotheque.fr/evenements
 
-### Parcours : Consulter des ressources
-**Keywords** : livre, podcast, vidéo, article, ressource, lire, écouter, regarder, conférence, webinaire, outil, témoignage
-Livres, podcasts, vidéos, articles et témoignages pour traverser le deuil.
-**Image hero** : ressources
-**Page du site** : https://deuilotheque.fr/ressources
-**Sections** : Header → Hero "Ressources" → Barre de recherche → Cards de ressources → Bouton vers la page du site → Footer
+### À propos
+Page : https://deuilotheque.fr/a-propos-de-la-deuilotheque
 
----
-
-### Parcours : Démarches administratives
-**Keywords** : démarche, administratif, décès, papiers, checklist, procédure, obsèques, succession, notaire, étapes, que faire
-Les étapes après un décès, présentées simplement. Vous n'avez pas à tout faire d'un coup.
-**Image hero** : checklist
-**Page du site** : https://deuilotheque.fr/demarches-administratives
-**Sections** : Header → Hero "Démarches administratives" → Cards par étape → Bouton vers la page du site → Footer
-
----
-
-### Parcours : Accueil
-**Keywords** : accueil, deuilotheque, c'est quoi, aide, bienvenue, présentation, qui êtes vous
-3 entrées : personne endeuillée, proche, professionnel ou bénévole.
-**Image hero** : soutien
-**Page du site** : https://deuilotheque.fr
-**Sections** : Header → Hero "La Deuillothèque" → 3 cards (Soutien, Ressources, Démarches) → Footer
+## Profils utilisateurs
+- Je suis une personne endeuillée → annuaire + ressources + démarches
+- Je suis un proche d'une personne endeuillée → annuaire + ressources
+- Je suis un professionnel ou bénévole → ressources + formations
 
   </details>
 </body>
